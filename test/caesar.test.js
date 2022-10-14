@@ -1,7 +1,7 @@
-let { caesar } = require("../src/caesar");
-let { expect } = require("chai");
+const { expect } = require("chai");
+const { caesar } = require("../src/caesar");
 
-describe("caesar module tests", () => {
+describe("caesar module tests written by Adrian", () => {
     it("shift equal to zero should return false", () => {
         expect(caesar("abc", 0)).to.be.false;
     });
@@ -27,11 +27,18 @@ describe("caesar module tests", () => {
         expect(actual).to.equal(expected);
     });
     it("should properly encode a message with positive shift", () => {
-        let expected = "thinkful"
+        let expected = "wklqnixo"
         let actual = caesar("thinkful", 3);
+        expect(actual).to.equal(expected);
     });
     it("should properly encode a message with negative shift", () => {
         let expected = "thinkful"
-        let actual = caesar("thinkful", -3);
+        let actual = caesar("wklqnixo", -3);
+        expect(actual).to.equal(expected);
     });
+    it("should properly decode a message", () => {
+        let expected = "thinkful"
+        let actual = caesar("wklqnixo", 3, false);
+        expect(actual).to.equal(expected);
+    })
 })
