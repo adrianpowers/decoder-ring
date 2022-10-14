@@ -19,6 +19,8 @@ const substitutionModule = (function () {
 
     let splitAlpha = alphabet.split("");
     let splitMsg = input.toLowerCase().split("");
+    let decoderAlpha = "abcdefghijklmnopqrstuvwxyz"
+    let splitDecoderAlpha = decoderAlpha.split("");
 
     if (encode) {
       splitMsg = splitMsg.map((letter) => {
@@ -31,7 +33,14 @@ const substitutionModule = (function () {
     }
 
     if (!encode) {
+      console.log(splitAlpha)
+      console.log(splitDecoderAlpha);
+      splitMsg = splitMsg.map((letter) => {
+        if (letter.charCodeAt(0) === 32) return letter;
+        return splitDecoderAlpha[splitAlpha.indexOf(letter)]
+      });
 
+      return splitMsg.join("");
     }
   }
 
@@ -41,7 +50,10 @@ const substitutionModule = (function () {
 })();
 
 console.log(
-  substitutionModule.substitution("message", "$wae&zrdxtfcygvuhbijnokmpl", false)
-);
+  substitutionModule.substitution("y&ii$r&", "$wae&zrdxtfcygvuhbijnokmpl", false)
+); // message
+console.log(
+  substitutionModule.substitution("jrufscpw xoy", "xoyqmcgrukswaflnthdjpzibev", false)
+); // thinkful abc
 
 module.exports = { substitution: substitutionModule.substitution };
