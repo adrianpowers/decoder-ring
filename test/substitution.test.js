@@ -15,4 +15,9 @@ describe("Adrian's substitution tests", () => {
         let actual = substitution("ThinKFul aBc", "xoyqmcgrukswaflnthdjpzibev");
         expect(actual).to.be.equal(expected);
     });
+    it(("should decode a message regardless of spaces, capitals, and special characters"), () => {
+        let expected = "thinkful abc";
+        let actual = substitution("jrufscpw xoy", "xoyqmcgrukswaflnthdjpzibev", false);
+        expect(actual).to.be.equal(expected);
+    });
 })
